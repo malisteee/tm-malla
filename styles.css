@@ -1,15 +1,17 @@
 body {
   font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #fff0f5;
+  margin: 0;
   padding: 20px;
+  background-color: white; /* fondo blanco */
+  color: black; /* texto negro en toda la página */
 }
 
-h1 {
-  color: #333;
+h1, h2 {
+  text-align: center;
+  color: black; /* títulos en negro */
 }
 
-.semestres {
+#contenedor-malla {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -17,62 +19,58 @@ h1 {
 }
 
 .semestre {
-  border: 2px solid #ffb6c1;
+  border: 2px solid #ccc;
   border-radius: 10px;
-  padding: 10px;
-  width: 280px;
-  background-color: #ffe4ec;
-}
-
-.semestre h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #c71585;
+  padding: 15px;
+  width: 250px;
+  background-color: #f9f9f9;
 }
 
 .ramo {
   display: block;
-  margin: 6px auto;
-  padding: 8px 12px;
-  border-radius: 10px;
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
   border: none;
-  background-color: #ffcad4; /* rosado pastel */
+  border-radius: 8px;
+  background-color: #f8c7d8; /* rosado */
+  color: black;
   cursor: pointer;
-  transition: 0.3s;
+  font-weight: bold;
 }
 
-/* Aprobado */
+.ramo:hover {
+  opacity: 0.9;
+}
+
 .ramo.completado {
   background-color: #f5f5dc; /* beige claro */
+  color: black; /* texto negro */
   text-decoration: line-through;
-  color: #444;
 }
 
-/* Bloqueado */
 .ramo.bloqueado {
-  background-color: #e0e0e0; /* gris claro */
-  color: #888;
+  background-color: #ccc;
+  color: black;
   cursor: not-allowed;
 }
 
-/* Barra de progreso */
-#progreso-container {
-  width: 80%;
-  height: 20px;
-  background-color: #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 20px auto;
+#progreso {
+  width: 100%;
+  max-width: 600px;
+  margin: 30px auto;
+  text-align: center;
 }
 
 #progreso-barra {
-  height: 100%;
+  height: 25px;
+  background-color: green;
   width: 0%;
-  background-color: #4caf50; /* verde progreso */
-  transition: width 0.3s ease;
+  transition: width 0.3s ease-in-out;
 }
 
 #progreso-texto {
-  font-weight: bold;
   margin-top: 10px;
+  font-weight: bold;
+  color: black;
 }

@@ -1,83 +1,24 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  margin-top: 30px;
-  color: #222;
-}
-
-#progreso-container {
-  width: 80%;
-  background-color: #ddd;
-  height: 20px;
-  margin: 20px auto;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-#progreso-barra {
-  height: 100%;
-  width: 0%;
-  background-color: #4caf50;
-  transition: width 0.3s ease;
-}
-
-#progreso-texto {
-  margin: 10px 0;
-  font-weight: bold;
-}
-
-.semestres {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-  padding: 20px;
-}
-
-.semestre {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  width: 250px;
-}
-
-.semestre h2 {
-  color: #333;
-  margin-bottom: 10px;
-}
-
+/* Botón normal (activo y clickeable) */
 .ramo {
-  display: block;
-  width: 100%;
-  margin: 5px 0;
-  padding: 10px;
+  background-color: #ffcad4; /* rosado pastel */
   border: none;
-  background-color: #ffa8b6;
-  color: #000;
-  border-radius: 6px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 0.3s;
 }
 
-.ramo:hover {
-  background-color: #ff8a9f;
-}
-
+/* Botón completado (clickeado y aprobado) */
 .ramo.completado {
-  background-color: #ccc;
+  background-color: #f5f5dc; /* beige claro */
   text-decoration: line-through;
-  color: #666;
+  color: #444;
 }
+
+/* Botón bloqueado (con prerrequisitos pendientes) */
 .ramo.bloqueado {
-  background-color: #e0e0e0;
+  background-color: #e0e0e0; /* gris claro */
   color: #888;
   cursor: not-allowed;
-  text-decoration: none;
 }

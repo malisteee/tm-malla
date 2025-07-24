@@ -1,73 +1,90 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: white;
-  color: black;
-  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
   padding: 20px;
+  margin: 0;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 40px;
-}
-
-.semestre {
-  background-color: #ffe6f0;
-  border: 2px solid #ffb6c1;
-  padding: 20px;
   margin-bottom: 30px;
-  border-radius: 12px;
-}
-
-.semestre h2 {
-  margin-top: 0;
-  color: black;
-}
-
-.ramo {
-  display: inline-block;
-  margin: 8px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 20px;
-  background-color: #ffb6c1;
-  color: black;
-  font-weight: 500;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.ramo:hover {
-  transform: scale(1.05);
-}
-
-.ramo.completado {
-  background-color: #f5e3c3;
-  text-decoration: line-through;
-  color: black;
-}
-
-.ramo.bloqueado {
-  background-color: #ccc;
-  color: #666;
-  cursor: not-allowed;
 }
 
 #progreso-container {
-  margin-top: 30px;
-  text-align: center;
+  width: 80%;
+  margin: 0 auto 20px auto;
+  background-color: #e0e0e0;
+  border-radius: 25px;
+  position: relative;
+  height: 25px;
 }
 
 #progreso-barra {
-  height: 20px;
-  background-color: #f5e3c3;
+  height: 100%;
+  background-color: #b56576;
   width: 0%;
-  transition: width 0.5s ease;
-  border-radius: 10px;
+  border-radius: 25px;
+  transition: width 0.3s;
 }
 
 #progreso-texto {
-  margin-top: 10px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  line-height: 25px;
+  color: #000;
   font-weight: bold;
-  color: black;
+}
+
+#contenedor-malla {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.semestre {
+  border: 2px solid #b56576;
+  border-radius: 10px;
+  padding: 15px;
+  width: 300px;
+  background-color: #fff0f5;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+
+.semestre h2 {
+  text-align: center;
+  margin-top: 0;
+  color: #000000;
+}
+
+.ramo {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  background-color: #f8c4d9;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000000;
+  transition: background-color 0.3s;
+}
+
+.ramo:hover {
+  background-color: #f497b6;
+}
+
+.ramo.completado {
+  background-color: #f5f5dc;
+  text-decoration: line-through;
+  color: #000000;
+}
+
+.ramo.bloqueado {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  color: #666666;
 }

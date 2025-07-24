@@ -1,82 +1,84 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  margin: 0;
-  padding: 20px;
+  background-color: white;
   color: black;
+  margin: 20px;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
-  color: black;
+}
+
+#progreso-container {
+  background-color: #eee;
+  width: 80%;
+  height: 25px;
+  margin: 20px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+#progreso-barra {
+  background-color: #ff80ab;
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+#progreso-texto {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 0;
+  line-height: 25px;
+  font-weight: bold;
+}
+
+#contenedor-malla {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .semestre {
-  margin-bottom: 40px;
-  border: 2px solid #f2b6cc;
-  border-radius: 15px;
+  border: 2px solid #ff80ab;
   padding: 15px;
-  background-color: #ffeef3;
+  border-radius: 15px;
+  width: 300px;
+  background-color: #ffe6f0;
 }
 
 .semestre h2 {
   text-align: center;
-  color: black;
 }
 
 .ramo {
   display: block;
-  margin: 10px auto;
-  padding: 10px 15px;
-  border: none;
+  width: 100%;
+  margin: 6px 0;
+  padding: 10px;
   border-radius: 10px;
-  background-color: #f9b3c2;
-  color: black;
+  border: none;
+  background-color: #ffc0cb;
   cursor: pointer;
-  font-size: 14px;
-  width: 90%;
-  max-width: 300px;
-  transition: background-color 0.3s ease;
+  font-weight: bold;
+  color: black;
 }
 
 .ramo:hover {
-  background-color: #f492a9;
+  opacity: 0.9;
 }
 
 .ramo.completado {
-  background-color: #f5e6cc; /* beige claro */
+  background-color: #f5e4c5;
   text-decoration: line-through;
   color: black;
 }
 
 .ramo.bloqueado {
   background-color: #d3d3d3;
-  color: #555;
+  color: #888;
   cursor: not-allowed;
-  opacity: 0.7;
-}
-
-#progreso-container {
-  width: 90%;
-  max-width: 600px;
-  margin: 20px auto;
-  background-color: #e0e0e0;
-  border-radius: 20px;
-  overflow: hidden;
-  height: 25px;
-}
-
-#progreso-barra {
-  height: 100%;
-  background-color: #a86d7a;
-  width: 0%;
-  transition: width 0.5s;
-}
-
-#progreso-texto {
-  text-align: center;
-  margin-top: 10px;
-  font-weight: bold;
-  color: black;
 }

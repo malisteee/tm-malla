@@ -1,33 +1,82 @@
 const malla = [
   // Semestre 1
-  ["Química General y Orgánica", "Antropología", "Introducción a la Tecnología Médica", "Biología Celular", "Matemáticas Básica", "Integrado en Habilidades Científicas para la Tecnología Médica"],
+  [
+    { nombre: "Química General y Orgánica" },
+    { nombre: "Antropología" },
+    { nombre: "Introducción a la Tecnología Médica" },
+    { nombre: "Biología Celular" },
+    { nombre: "Matemáticas Básica" },
+    { nombre: "Integrado en Habilidades Científicas para la Tecnología Médica" }
+  ],
 
   // Semestre 2
-  ["Bioquímica General", "Morfología Básica", "Ética", "Tecnología Médica en el Equipo de Salud", "Bioseguridad y Procedimientos de Apoyo Diagnóstico", "Psicología de Atención al Paciente"],
+  [
+    { nombre: "Bioquímica General", prereqs: ["Química General y Orgánica"] },
+    { nombre: "Morfología Básica", prereqs: ["Biología Celular"] },
+    { nombre: "Ética" },
+    { nombre: "Tecnología Médica en el Equipo de Salud", prereqs: ["Introducción a la Tecnología Médica"] },
+    { nombre: "Bioseguridad y Procedimientos de Apoyo Diagnóstico" },
+    { nombre: "Psicología de Atención al Paciente" }
+  ],
 
-  // Semestre 3
-  ["Integrado Fisiología-Fisiopatología-Farmacología 1", "Salud Poblacional", "Infectología Básica", "Fundamentos de Física Médica", "Matemática Integrada a la Imagenología Médica"],
-
-  // Semestre 4
-  ["Integrado Fisiología-Fisiopatología-Farmacología 2", "Bioética", "Epidemiología", "Física Médica 1", "Anatomía Imagenológica", "Hito Evaluativo Integrado"],
-
-  // Semestre 5
-  ["Persona y Sociedad", "Informática Aplicada a Imagenología y Física Médica", "Bioestadística", "Física Médica 2", "Técnicas Radiológicas 1", "Anatomía Imagenológica Integrada"],
-
-  // Semestre 6
-  ["Gestión en Equipos para el Alto Desempeño", "Electivo 1: Formación Integral", "Radiobiología y Protección Radiológica", "Técnicas Radiológicas 2", "Gestión de Calidad en Imagenología y Física Médica", "Imagenología Patológica"],
-
-  // Semestre 7
-  ["Electivo 2: Formación Integral", "Metodología de la Investigación", "Medicina Nuclear", "Ultrasonido", "Tomografía Computada 1"],
-
-  // Semestre 8
-  ["Electivo 3: Formación Integral", "Tomografía Computada 2", "Salud Digital", "Radioterapia", "Resonancia Magnética", "Hito Evaluativo Integrativo Interprofesional"],
-
-  // Semestre 9
-  ["Gestión de Carrera y Desarrollo Profesional", "Análisis Clínico Integrado", "Taller de Investigación Aplicado en Tecnología Médica", "Electivo 1", "Electivo 2", "Sistemas de Acreditación de Imagenología y Física Médica"],
-
-  // Semestre 10
-  ["Internado"]
+  // Semestre 3 al 10 (sin prerrequisitos, puedes añadirlos si quieres)
+  [
+    { nombre: "Integrado Fisiología-Fisiopatología-Farmacología 1" },
+    { nombre: "Salud Poblacional" },
+    { nombre: "Infectología Básica" },
+    { nombre: "Fundamentos de Física Médica" },
+    { nombre: "Matemática Integrada a la Imagenología Médica" }
+  ],
+  [
+    { nombre: "Integrado Fisiología-Fisiopatología-Farmacología 2" },
+    { nombre: "Bioética" },
+    { nombre: "Epidemiología" },
+    { nombre: "Física Médica 1" },
+    { nombre: "Anatomía Imagenológica" },
+    { nombre: "Hito Evaluativo Integrado" }
+  ],
+  [
+    { nombre: "Persona y Sociedad" },
+    { nombre: "Informática Aplicada a Imagenología y Física Médica" },
+    { nombre: "Bioestadística" },
+    { nombre: "Física Médica 2" },
+    { nombre: "Técnicas Radiológicas 1" },
+    { nombre: "Anatomía Imagenológica Integrada" }
+  ],
+  [
+    { nombre: "Gestión en Equipos para el Alto Desempeño" },
+    { nombre: "Electivo 1: Formación Integral" },
+    { nombre: "Radiobiología y Protección Radiológica" },
+    { nombre: "Técnicas Radiológicas 2" },
+    { nombre: "Gestión de Calidad en Imagenología y Física Médica" },
+    { nombre: "Imagenología Patológica" }
+  ],
+  [
+    { nombre: "Electivo 2: Formación Integral" },
+    { nombre: "Metodología de la Investigación" },
+    { nombre: "Medicina Nuclear" },
+    { nombre: "Ultrasonido" },
+    { nombre: "Tomografía Computada 1" }
+  ],
+  [
+    { nombre: "Electivo 3: Formación Integral" },
+    { nombre: "Tomografía Computada 2" },
+    { nombre: "Salud Digital" },
+    { nombre: "Radioterapia" },
+    { nombre: "Resonancia Magnética" },
+    { nombre: "Hito Evaluativo Integrativo Interprofesional" }
+  ],
+  [
+    { nombre: "Gestión de Carrera y Desarrollo Profesional" },
+    { nombre: "Análisis Clínico Integrado" },
+    { nombre: "Taller de Investigación Aplicado en Tecnología Médica" },
+    { nombre: "Electivo 1" },
+    { nombre: "Electivo 2" },
+    { nombre: "Sistemas de Acreditación de Imagenología y Física Médica" }
+  ],
+  [
+    { nombre: "Internado" }
+  ]
 ];
 
 const contenedor = document.getElementById("contenedor-malla");
@@ -41,12 +90,20 @@ malla.forEach((ramos, index) => {
 
   ramos.forEach(ramo => {
     const boton = document.createElement("button");
-    boton.textContent = ramo;
+    boton.textContent = ramo.nombre;
     boton.className = "ramo";
+    boton.disabled = ramo.prereqs?.length > 0;
+    if (boton.disabled) boton.classList.add("bloqueado");
+
     boton.addEventListener("click", () => {
+      if (boton.disabled) return;
+
       boton.classList.toggle("completado");
       actualizarProgreso();
+      actualizarBloqueos(); // revisa qué desbloquear
     });
+
+    ramo.boton = boton; // guardamos referencia
     semestreDiv.appendChild(boton);
   });
 
@@ -60,4 +117,21 @@ function actualizarProgreso() {
 
   document.getElementById("progreso-barra").style.width = `${porcentaje}%`;
   document.getElementById("progreso-texto").textContent = `${porcentaje}% completado`;
+}
+
+function actualizarBloqueos() {
+  malla.flat().forEach(ramo => {
+    if (!ramo.prereqs || ramo.prereqs.length === 0) return;
+
+    const prereqsCompletados = ramo.prereqs.every(nombre => {
+      return malla.flat().find(r => r.nombre === nombre)?.boton.classList.contains("completado");
+    });
+
+    ramo.boton.disabled = !prereqsCompletados;
+    if (prereqsCompletados) {
+      ramo.boton.classList.remove("bloqueado");
+    } else {
+      ramo.boton.classList.add("bloqueado");
+    }
+  });
 }

@@ -1,120 +1,65 @@
-// Datos de los ramos y prerequisitos
-const ramos = [
-  {
-    semestre: 1,
-    nombre: "Química General y Orgánica"
-  },
-  {
-    semestre: 1,
-    nombre: "Antropología"
-  },
-  {
-    semestre: 1,
-    nombre: "Introducción a la Tecnología Médica"
-  },
-  {
-    semestre: 1,
-    nombre: "Biología Celular"
-  },
-  {
-    semestre: 1,
-    nombre: "Matemáticas Básica"
-  },
-  {
-    semestre: 1,
-    nombre: "Integrado en Habilidades Científicas para la Tecnología Médica"
-  },
-  {
-    semestre: 2,
-    nombre: "Bioquímica General",
-    prerequisitos: ["Química General y Orgánica"]
-  },
-  {
-    semestre: 2,
-    nombre: "Morfología Básica"
-  },
-  {
-    semestre: 2,
-    nombre: "Ética",
-    prerequisitos: ["Antropología"]
-  },
-  {
-    semestre: 2,
-    nombre: "Tecnología Médica en el Equipo de Salud",
-    prerequisitos: ["Introducción a la Tecnología Médica"]
-  },
-  {
-    semestre: 2,
-    nombre: "Bioseguridad y Procedimientos de Apoyo Diagnóstico"
-  },
-  {
-    semestre: 2,
-    nombre: "Psicología de Atención al Paciente"
-  }
+const malla = [
+  // Semestre 1
+  ["Química General y Orgánica", "Antropología", "Introducción a la Tecnología Médica", "Biología Celular", "Matemáticas Básica", "Integrado en Habilidades Científicas para la Tecnología Médica"],
+
+  // Semestre 2
+  ["Bioquímica General", "Morfología Básica", "Ética", "Tecnología Médica en el Equipo de Salud", "Bioseguridad y Procedimientos de Apoyo Diagnóstico", "Psicología de Atención al Paciente"],
+
+  // Semestre 3
+  ["Física General", "Anatomía Radiológica", "Fisiología Humana", "Procesamiento Digital de Imágenes", "Fundamentos de Administración en Salud", "Gestión en Salud"],
+
+  // Semestre 4
+  ["Imagenología General", "Fundamentos de Radioterapia", "Semiología", "Técnicas de Procesamiento Imagenológico", "Taller de Investigación I", "Formación Ciudadana"],
+
+  // Semestre 5
+  ["Imagenología Osteomuscular", "Imagenología de Tórax", "Imagenología de Abdomen", "Fundamentos de Resonancia Magnética", "Bioética", "Taller de Investigación II"],
+
+  // Semestre 6
+  ["Técnicas Especiales en Imagenología", "Imagenología en Urgencias", "Física Radiológica", "Resonancia Magnética Avanzada", "Radiobiología", "Taller de Investigación III"],
+
+  // Semestre 7
+  ["Práctica Profesional I", "Evaluación de Tecnología en Salud", "Gestión de Calidad", "Electivo Profesional I"],
+
+  // Semestre 8
+  ["Práctica Profesional II", "Formulación y Evaluación de Proyectos", "Electivo Profesional II"],
+
+  // Semestre 9
+  ["Internado Profesional I"],
+
+  // Semestre 10
+  ["Internado Profesional II"]
 ];
 
-// Cargar estado desde localStorage
-const estado = JSON.parse(localStorage.getItem("estadoRamos")) || {};
+// Generar tarjetas
+const contenedor = document.getElementById("contenedor-malla");
 
-function crearMalla() {
-  const contenedor = document.getElementById("contenedor-malla");
-  contenedor.innerHTML = "";
+malla.forEach((ramos, index) => {
+  const semestreDiv = document.createElement("div");
+  semestreDiv.className = "semestre";
+  const titulo = document.createElement("h2");
+  titulo.textContent = `Semestre ${index + 1}`;
+  semestreDiv.appendChild(titulo);
 
-  for (let i = 1; i <= 2; i++) {
-    const semestreDiv = document.createElement("div");
-    semestreDiv.classList.add("semestre");
-
-    const titulo = document.createElement("h2");
-    titulo.textContent = `Semestre ${i}`;
-    semestreDiv.appendChild(titulo);
-
-    const cursosDelSemestre = ramos.filter(r => r.semestre === i);
-
-    cursosDelSemestre.forEach(ramo => {
-      const div = document.createElement("div");
-      div.classList.add("curso");
-      div.textContent = ramo.nombre;
-
-      const estadoRamo = estado[ramo.nombre];
-
-      // Si tiene prerequisitos y alguno no está aprobado, bloquear
-      const bloqueado = ramo.prerequisitos?.some(
-        prereq => !estado[prereq]
-      );
-
-      if (estadoRamo) {
-        div.classList.add("aprobado");
-      } else if (bloqueado) {
-        div.classList.add("bloqueado");
-      }
-
-      div.addEventListener("click", () => {
-        if (div.classList.contains("bloqueado")) return;
-
-        div.classList.toggle("aprobado");
-        estado[ramo.nombre] = div.classList.contains("aprobado");
-
-        localStorage.setItem("estadoRamos", JSON.stringify(estado));
-        crearMalla();
-        actualizarProgreso();
-      });
-
-      semestreDiv.appendChild(div);
+  ramos.forEach(ramo => {
+    const boton = document.createElement("button");
+    boton.textContent = ramo;
+    boton.className = "ramo";
+    boton.addEventListener("click", () => {
+      boton.classList.toggle("completado");
+      actualizarProgreso();
     });
+    semestreDiv.appendChild(boton);
+  });
 
-    contenedor.appendChild(semestreDiv);
-  }
+  contenedor.appendChild(semestreDiv);
+});
 
-  actualizarProgreso();
-}
-
+// Progreso
 function actualizarProgreso() {
-  const total = ramos.length;
-  const aprobados = Object.values(estado).filter(e => e).length;
-  const porcentaje = Math.round((aprobados / total) * 100);
+  const total = document.querySelectorAll(".ramo").length;
+  const completados = document.querySelectorAll(".ramo.completado").length;
+  const porcentaje = ((completados / total) * 100).toFixed(0);
 
   document.getElementById("progreso-barra").style.width = `${porcentaje}%`;
   document.getElementById("progreso-texto").textContent = `${porcentaje}% completado`;
 }
-
-crearMalla();

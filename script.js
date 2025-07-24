@@ -8,77 +8,83 @@ const malla = [
     { nombre: "Matemáticas Básica" },
     { nombre: "Integrado en Habilidades Científicas para la Tecnología Médica" }
   ],
-
   // Semestre 2
   [
     { nombre: "Bioquímica General", prereqs: ["Química General y Orgánica"] },
-    { nombre: "Morfología Básica", prereqs: ["Biología Celular"] },
-    { nombre: "Ética" },
+    { nombre: "Morfología Básica" },
+    { nombre: "Ética", prereqs: ["Antropología"] },
     { nombre: "Tecnología Médica en el Equipo de Salud", prereqs: ["Introducción a la Tecnología Médica"] },
     { nombre: "Bioseguridad y Procedimientos de Apoyo Diagnóstico" },
     { nombre: "Psicología de Atención al Paciente" }
   ],
-
-  // Semestre 3 al 10 (sin prerrequisitos, puedes añadirlos si quieres)
+  // Semestre 3
   [
-    { nombre: "Integrado Fisiología-Fisiopatología-Farmacología 1" },
+    { nombre: "Integrado Fisiología-Fisiopatología-Farmacología 1", prereqs: ["Bioquímica General"] },
     { nombre: "Salud Poblacional" },
-    { nombre: "Infectología Básica" },
-    { nombre: "Fundamentos de Física Médica" },
-    { nombre: "Matemática Integrada a la Imagenología Médica" }
+    { nombre: "Infectología Básica", prereqs: ["Morfología Básica"] },
+    { nombre: "Fundamentos de Física Médica", prereqs: ["Matemáticas Básica"] },
+    { nombre: "Matemática Integrada a la Imagenología Médica", prereqs: ["Matemáticas Básica"] }
   ],
+  // Semestre 4
   [
-    { nombre: "Integrado Fisiología-Fisiopatología-Farmacología 2" },
+    { nombre: "Integrado Fisiología-Fisiopatología-Farmacología 2", prereqs: ["Integrado Fisiología-Fisiopatología-Farmacología 1"] },
     { nombre: "Bioética" },
-    { nombre: "Epidemiología" },
-    { nombre: "Física Médica 1" },
-    { nombre: "Anatomía Imagenológica" },
-    { nombre: "Hito Evaluativo Integrado" }
+    { nombre: "Epidemiología", prereqs: ["Salud Poblacional"] },
+    { nombre: "Física Médica 1", prereqs: ["Fundamentos de Física Médica"] },
+    { nombre: "Anatomía Imagenológica", prereqs: ["Morfología Básica"] },
+    { nombre: "Hito Evaluativo Integrado", prereqs: ["Bioseguridad y Procedimientos de Apoyo Diagnóstico", "Psicología de Atención al Paciente", "Integrado Fisiología-Fisiopatología-Farmacología 1", "Infectología Básica", "Fundamentos de Física Médica", "Matemática Integrada a la Imagenología Médica"] }
   ],
+  // Semestre 5
   [
-    { nombre: "Persona y Sociedad" },
-    { nombre: "Informática Aplicada a Imagenología y Física Médica" },
-    { nombre: "Bioestadística" },
-    { nombre: "Física Médica 2" },
+    { nombre: "Persona y Sociedad", prereqs: ["Ética"] },
+    { nombre: "Informática Aplicada a Imagenología y Física Médica", prereqs: ["Matemática Integrada a la Imagenología Médica"] },
+    { nombre: "Bioestadística", prereqs: ["Matemáticas Básica"] },
+    { nombre: "Física Médica 2", prereqs: ["Física Médica 1"] },
     { nombre: "Técnicas Radiológicas 1" },
-    { nombre: "Anatomía Imagenológica Integrada" }
+    { nombre: "Anatomía Imagenológica Integrada", prereqs: ["Física Médica 1", "Anatomía Imagenológica"] }
   ],
+  // Semestre 6
   [
     { nombre: "Gestión en Equipos para el Alto Desempeño" },
     { nombre: "Electivo 1: Formación Integral" },
-    { nombre: "Radiobiología y Protección Radiológica" },
-    { nombre: "Técnicas Radiológicas 2" },
+    { nombre: "Radiobiología y Protección Radiológica", prereqs: ["Física Médica 2"] },
+    { nombre: "Técnicas Radiológicas 2", prereqs: ["Física Médica 2", "Técnicas Radiológicas 1"] },
     { nombre: "Gestión de Calidad en Imagenología y Física Médica" },
-    { nombre: "Imagenología Patológica" }
+    { nombre: "Imagenología Patológica", prereqs: ["Anatomía Imagenológica Integrada"] }
   ],
+  // Semestre 7
   [
     { nombre: "Electivo 2: Formación Integral" },
     { nombre: "Metodología de la Investigación" },
-    { nombre: "Medicina Nuclear" },
-    { nombre: "Ultrasonido" },
-    { nombre: "Tomografía Computada 1" }
+    { nombre: "Medicina Nuclear", prereqs: ["Radiobiología y Protección Radiológica", "Técnicas Radiológicas 2"] },
+    { nombre: "Ultrasonido", prereqs: ["Imagenología Patológica"] },
+    { nombre: "Tomografía Computada 1", prereqs: ["Técnicas Radiológicas 2", "Imagenología Patológica"] }
   ],
+  // Semestre 8
   [
     { nombre: "Electivo 3: Formación Integral" },
-    { nombre: "Tomografía Computada 2" },
+    { nombre: "Tomografía Computada 2", prereqs: ["Tomografía Computada 1"] },
     { nombre: "Salud Digital" },
-    { nombre: "Radioterapia" },
-    { nombre: "Resonancia Magnética" },
-    { nombre: "Hito Evaluativo Integrativo Interprofesional" }
+    { nombre: "Radioterapia", prereqs: ["Tomografía Computada 1"] },
+    { nombre: "Resonancia Magnética", prereqs: ["Imagenología Patológica"] },
+    { nombre: "Hito Evaluativo Integrativo Interprofesional", prereqs: ["Técnicas Radiológicas 2", "Imagenología Patológica", "Medicina Nuclear", "Tomografía Computada 1", "Ultrasonido"] }
   ],
+  // Semestre 9
   [
     { nombre: "Gestión de Carrera y Desarrollo Profesional" },
-    { nombre: "Análisis Clínico Integrado" },
-    { nombre: "Taller de Investigación Aplicado en Tecnología Médica" },
+    { nombre: "Análisis Clínico Integrado", prereqs: ["Tomografía Computada 2", "Resonancia Magnética"] },
+    { nombre: "Taller de Investigación Aplicado en Tecnología Médica en Imagenología y Física Médica", prereqs: ["Medicina Nuclear", "Tomografía Computada 2", "Radioterapia", "Resonancia Magnética"] },
     { nombre: "Electivo 1" },
     { nombre: "Electivo 2" },
     { nombre: "Sistemas de Acreditación de Imagenología y Física Médica" }
   ],
+  // Semestre 10
   [
-    { nombre: "Internado" }
+    { nombre: "Internado", prereqs: ["Medicina Nuclear", "Tomografía Computada 2", "Radioterapia", "Resonancia Magnética", "Taller de Investigación Aplicado en Tecnología Médica en Imagenología y Física Médica"] }
   ]
 ];
 
+// Construcción de la malla
 const contenedor = document.getElementById("contenedor-malla");
 
 malla.forEach((ramos, index) => {
@@ -100,10 +106,10 @@ malla.forEach((ramos, index) => {
 
       boton.classList.toggle("completado");
       actualizarProgreso();
-      actualizarBloqueos(); // revisa qué desbloquear
+      actualizarBloqueos();
     });
 
-    ramo.boton = boton; // guardamos referencia
+    ramo.boton = boton;
     semestreDiv.appendChild(boton);
   });
 
@@ -123,12 +129,13 @@ function actualizarBloqueos() {
   malla.flat().forEach(ramo => {
     if (!ramo.prereqs || ramo.prereqs.length === 0) return;
 
-    const prereqsCompletados = ramo.prereqs.every(nombre => {
-      return malla.flat().find(r => r.nombre === nombre)?.boton.classList.contains("completado");
+    const completados = ramo.prereqs.every(nombre => {
+      const prereq = malla.flat().find(r => r.nombre === nombre);
+      return prereq?.boton.classList.contains("completado");
     });
 
-    ramo.boton.disabled = !prereqsCompletados;
-    if (prereqsCompletados) {
+    ramo.boton.disabled = !completados;
+    if (completados) {
       ramo.boton.classList.remove("bloqueado");
     } else {
       ramo.boton.classList.add("bloqueado");

@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Malla Tecnología Médica</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Malla Interactiva - Imagenología y Física Médica</h1>
+  <h1>Malla Tecnología Médica</h1>
+
+  <!-- Barra de progreso -->
   <div id="progreso-container">
     <div id="progreso-barra"></div>
-    <span id="progreso-texto">0% completado</span>
   </div>
-  <div class="semestres" id="contenedor-malla">
-    <!-- Los 10 semestres se insertan desde JavaScript -->
-  </div>
+  <p id="progreso-texto">0% completado</p>
+
+  <!-- Contenedor principal de la malla -->
+  <div id="contenedor-malla" class="semestres"></div>
+
   <script src="script.js"></script>
 </body>
 </html>

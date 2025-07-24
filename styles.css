@@ -1,60 +1,77 @@
 body {
-  font-family: sans-serif;
-  background: #f4f4f4;
-  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
+
 h1 {
-  text-align: center;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  color: #222;
 }
-.semestres {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-.curso {
-  width: 200px;
-  padding: 10px;
-  background: #ffc0cb; /* rosado */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-  user-select: none;
-}
-.curso.aprobado {
-  background: #800000; /* burdeo claro */
-  color: white;
-  text-decoration: line-through;
-}
-.curso.bloqueado {
-  background: #ccc;
-  color: #666;
-  pointer-events: none;
-  opacity: 0.6;
-}
+
 #progreso-container {
   width: 80%;
-  height: 25px;
+  background-color: #ddd;
+  height: 20px;
   margin: 20px auto;
-  background-color: #e0e0e0;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  position: relative;
 }
+
 #progreso-barra {
   height: 100%;
   width: 0%;
   background-color: #4caf50;
-  transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease;
 }
+
 #progreso-texto {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  color: black;
+  margin: 10px 0;
   font-weight: bold;
-  line-height: 25px;
+}
+
+.semestres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+}
+
+.semestre {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 250px;
+}
+
+.semestre h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.ramo {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
+  border: none;
+  background-color: #ffa8b6;
+  color: #000;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ramo:hover {
+  background-color: #ff8a9f;
+}
+
+.ramo.completado {
+  background-color: #ccc;
+  text-decoration: line-through;
+  color: #666;
 }

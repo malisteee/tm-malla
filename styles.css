@@ -1,88 +1,73 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background-color: white;
   color: black;
-  padding: 20px;
   margin: 0;
+  padding: 20px;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
-}
-
-#contenedor-malla {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  margin-bottom: 40px;
 }
 
 .semestre {
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
-  width: 300px;
-  background-color: #f9f9f9;
+  background-color: #ffe6f0;
+  border: 2px solid #ffb6c1;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 12px;
 }
 
 .semestre h2 {
-  text-align: center;
-  margin-bottom: 10px;
+  margin-top: 0;
   color: black;
 }
 
 .ramo {
-  display: block;
-  width: 100%;
-  margin: 5px 0;
-  padding: 10px;
-  background-color: #ffc0cb; /* Rosado claro */
-  color: black;
+  display: inline-block;
+  margin: 8px;
+  padding: 10px 15px;
   border: none;
-  border-radius: 8px;
+  border-radius: 20px;
+  background-color: #ffb6c1;
+  color: black;
+  font-weight: 500;
   cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .ramo:hover {
-  opacity: 0.9;
+  transform: scale(1.05);
 }
 
 .ramo.completado {
-  background-color: #f5e5b8; /* Beige claro */
+  background-color: #f5e3c3;
   text-decoration: line-through;
+  color: black;
 }
 
 .ramo.bloqueado {
   background-color: #ccc;
+  color: #666;
   cursor: not-allowed;
-  opacity: 0.6;
 }
 
-#progreso {
-  width: 80%;
-  margin: 0 auto 30px auto;
-  height: 25px;
-  background-color: #eee;
-  border-radius: 20px;
-  position: relative;
+#progreso-container {
+  margin-top: 30px;
+  text-align: center;
 }
 
 #progreso-barra {
-  height: 100%;
+  height: 20px;
+  background-color: #f5e3c3;
   width: 0%;
-  background-color: #8fbc8f;
-  border-radius: 20px;
   transition: width 0.5s ease;
+  border-radius: 10px;
 }
 
 #progreso-texto {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  line-height: 25px;
+  margin-top: 10px;
   font-weight: bold;
   color: black;
 }

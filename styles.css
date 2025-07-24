@@ -1,24 +1,78 @@
-/* Botón normal (activo y clickeable) */
-.ramo {
-  background-color: #ffcad4; /* rosado pastel */
-  border: none;
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #fff0f5;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+.semestres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.semestre {
+  border: 2px solid #ffb6c1;
   border-radius: 10px;
   padding: 10px;
-  margin: 5px;
+  width: 280px;
+  background-color: #ffe4ec;
+}
+
+.semestre h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #c71585;
+}
+
+.ramo {
+  display: block;
+  margin: 6px auto;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffcad4; /* rosado pastel */
   cursor: pointer;
   transition: 0.3s;
 }
 
-/* Botón completado (clickeado y aprobado) */
+/* Aprobado */
 .ramo.completado {
   background-color: #f5f5dc; /* beige claro */
   text-decoration: line-through;
   color: #444;
 }
 
-/* Botón bloqueado (con prerrequisitos pendientes) */
+/* Bloqueado */
 .ramo.bloqueado {
   background-color: #e0e0e0; /* gris claro */
   color: #888;
   cursor: not-allowed;
+}
+
+/* Barra de progreso */
+#progreso-container {
+  width: 80%;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px auto;
+}
+
+#progreso-barra {
+  height: 100%;
+  width: 0%;
+  background-color: #4caf50; /* verde progreso */
+  transition: width 0.3s ease;
+}
+
+#progreso-texto {
+  font-weight: bold;
+  margin-top: 10px;
 }
